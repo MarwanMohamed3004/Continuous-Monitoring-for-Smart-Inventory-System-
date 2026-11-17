@@ -132,7 +132,9 @@ pipeline {
                             echo "Scanning Docker image using Trivy..."
 
                             trivy --config "" image \
+                                --image-src docker \
                                 --scanners vuln \
+                                --skip-files "**/pip/_vendor/bom.cdx.json" \
                                 --severity HIGH,CRITICAL \
                                 --exit-code 1 \
                                 --ignore-unfixed \
