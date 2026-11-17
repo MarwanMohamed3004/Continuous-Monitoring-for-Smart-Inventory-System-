@@ -65,7 +65,7 @@ pipeline {
                         sh '''
                             set -e
 
-                            echo "Running tests with Python 3.10..."
+                            echo "Running tests with Python 3.11..."
 
                             docker run --rm \
                                 --user "$(id -u):$(id -g)" \
@@ -73,7 +73,7 @@ pipeline {
                                 -e FLASK_ENV=testing \
                                 -v "$WORKSPACE:/app" \
                                 -w /app \
-                                python:3.10-slim \
+                                python:3.11-slim \
                                 sh -c "python -m venv /tmp/test-venv && \
                                 /tmp/test-venv/bin/pip install \
                                     --no-cache-dir \
